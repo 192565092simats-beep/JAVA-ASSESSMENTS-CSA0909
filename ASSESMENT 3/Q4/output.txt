@@ -1,0 +1,33 @@
+==========================================================
+ Q4: Thread Creation and the Thread Life Cycle            
+==========================================================
+
+--- 1. Proof: Calling run() vs start() ---
+Invoking directCall.run():
+  [Station-Direct] Started scanning on thread: main (Priority: 5, Daemon: false)
+  [Station-Direct] Finished scanning 5 scripts.
+
+Invoking directCall.start():
+  [Station-Threaded] Started scanning on thread: Station-Threaded (Priority: 5, Daemon: false)
+  [Station-Threaded] Finished scanning 5 scripts.
+
+--- 2. Parallel Scanning with 4 Stations using start() & join() ---
+State before start(): NEW (NEW)
+  [Scanner-1] Started scanning on thread: Scanner-1 (Priority: 5, Daemon: false)
+  [Scanner-2] Started scanning on thread: Scanner-2 (Priority: 5, Daemon: false)
+  [Scanner-3] Started scanning on thread: Scanner-3 (Priority: 5, Daemon: false)
+  [Scanner-4] Started scanning on thread: Scanner-4 (Priority: 5, Daemon: false)
+State immediately after start(): RUNNABLE (RUNNABLE / TIMED_WAITING)
+  [Scanner-2] Finished scanning 25 scripts.
+  [Scanner-4] Finished scanning 25 scripts.
+  [Scanner-1] Finished scanning 25 scripts.
+  [Scanner-3] Finished scanning 25 scripts.
+State after join(): TERMINATED (TERMINATED)
+All stations finished! Verified Total Answer Scripts: 100 (Expected: 100)
+
+--- 3. Daemon Thread Experiment ---
+  [Daemon-Cleaner] Background hardware telemetry running...
+  [Daemon-Cleaner] Background hardware telemetry running...
+  [Daemon-Cleaner] Background hardware telemetry running...
+  [Main] Main thread exiting. Daemon cleaner will be terminated by JVM automatically.
+==========================================================
