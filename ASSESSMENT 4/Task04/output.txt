@@ -1,0 +1,40 @@
+==========================================================
+ TASK 4: Event-Handling Forensics - Drawing Pad           
+==========================================================
+
+[FORENSIC DIAGNOSIS 1] Defect: Method Name Capitalization
+  Original Code: public void mouseclicked(MouseEvent e)
+  Interface Spec: public void mouseClicked(MouseEvent e) [in MouseListener]
+  Compiler Consequence: MouseAdapter supplies an empty mouseClicked(MouseEvent e).
+  Because 'mouseclicked' has a lowercase 'c', the compiler treated it as an ordinary
+  new helper method. At runtime, the AWT Event Dispatcher invoked MouseAdapter's
+  default empty mouseClicked(), completely ignoring the developer's method!
+
+[FORENSIC DIAGNOSIS 2] Defect: Transient getGraphics() vs paint(Graphics g)
+  Original Code: Graphics g = getGraphics(); g.fillOval(x, y, 6, 6);
+  AWT Painting Principle: getGraphics() draws directly to the screen pixel surface.
+  AWT does NOT retain or buffer pixels. When the OS minimizes, restores, resizes,
+  or overlaps a window, the native windowing system invalidates the viewport and
+  calls paint(Graphics g). If shapes are not stored in memory and drawn in paint(),
+  all pixels are wiped completely clean on every repaint cycle.
+
+[STEP 1] Testing Repaired DrawPad with Clicks Simulation:
+  Simulated Click at (50, 80) -> Status: Last click: (50, 80) | Total Dots: 1
+  Simulated Click at (120, 150) -> Status: Last click: (120, 150) | Total Dots: 2
+  Simulated Click at (200, 220) -> Status: Last click: (200, 220) | Total Dots: 3
+  Simulated Click at (310, 105) -> Status: Last click: (310, 105) | Total Dots: 4
+
+[STEP 2] Verifying Model State Persistence:
+  Total points stored in memory: 4
+    Dot #1: Center=(50, 80), Render Bound=(47, 77, 6, 6)
+    Dot #2: Center=(120, 150), Render Bound=(117, 147, 6, 6)
+    Dot #3: Center=(200, 220), Render Bound=(197, 217, 6, 6)
+    Dot #4: Center=(310, 105), Render Bound=(307, 102, 6, 6)
+
+[STEP 3] Simulating Window Minimize / Restore Repaint Cycle:
+  Repaint cycle executed successfully on off-screen graphics buffer.
+  All 4 dots preserved and redrawn without loss!
+
+==========================================================
+ Task 4 Forensic Defects Repaired and Verified!           
+==========================================================
