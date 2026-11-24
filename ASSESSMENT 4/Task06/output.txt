@@ -1,0 +1,36 @@
+======================================================================
+ TASK 6: Design Challenge - Campus Event Registration Desktop App      
+======================================================================
+
+[TEST 1] Testing Input Validation Enforcement:
+  [PASS] Handled Invalid ID: Invalid Student ID! Must be 6-15 alphanumeric characters (e.g., 192565092).
+  [PASS] Handled Invalid Email: Invalid Email address format (e.g., student@simats.edu.in).
+
+[TEST 2] Testing Valid Asynchronous Registrations:
+  [PASS] Registered: [105] Sita Devi (192565096) -> RoboWars Challenge [REGISTERED]
+  [PASS] Registered: [104] Rahul Sharma (192565095) -> Hackathon 2026 [REGISTERED]
+
+[TEST 3] Testing Duplicate Registration Prevention:
+  [PASS] Duplicate Correctly Rejected: Duplicate Registration Rejected! Student (192565095) is already registered for "Hackathon 2026".
+
+[TEST 4] Testing Cross-Event Registration (Same Student, Different Event):
+  [PASS] Cross-Registration Allowed: [106] Rahul Sharma (192565095) -> Code Marathon [REGISTERED]
+
+[TEST 5] Testing Query & Filtering by Event Category:
+  Filter [Hackathon 2026] Count: 2
+  Filter [RoboWars Challenge] Count: 2
+    - Ananya Sharma (192565094) [Electronics Eng]
+    - Thejas Balaji (192565092) [Computer Science]
+    - Sita Devi (192565096) [Electronics Eng]
+    - Rahul Sharma (192565095) [Computer Science]
+  Total Directory Count across all events: 6
+
+[TEST 6] Testing Swing GUI Application Structure & Menus:
+  Window Title: SIMATS Campus Event Registration Portal - Desktop Application
+  JMenuBar Menus: File, Filter, Help (3 menus)
+  JTable Column Count: 8
+  JTable Loaded Initial Row Count: 0
+
+======================================================================
+ Task 6 Campus Event Registration Architecture 100% Verified!          
+======================================================================
