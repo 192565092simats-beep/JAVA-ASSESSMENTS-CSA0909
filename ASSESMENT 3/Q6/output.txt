@@ -1,0 +1,15 @@
+Sum of tokens collected: 210 (expected 210)
+
+==========================================================
+ Q6 Part A: Hostel Wallet Transfers & Deadlock Prevention 
+==========================================================
+
+1. Testing Safe Lock-Ordering Transfers (Bidirectional):
+  [SAFE-ORDERED] ACC_001 -> ACC_002: Transferred Rs 100.00 (Locks acquired in strict order: ACC_001, ACC_002)
+  [SAFE-ORDERED] ACC_002 -> ACC_001: Transferred Rs 50.00 (Locks acquired in strict order: ACC_001, ACC_002)
+  Final Balances: ACC_001 = Rs 950.00, ACC_002 = Rs 1050.00
+
+2. Testing ReentrantLock tryLock() with Timeout Alternative:
+  [TRY-LOCK SUCCESS] Transferred Rs 200.00 from ACC_001 to ACC_002
+  Final Balances: ACC_001 = Rs 750.00, ACC_002 = Rs 1250.00
+==========================================================
