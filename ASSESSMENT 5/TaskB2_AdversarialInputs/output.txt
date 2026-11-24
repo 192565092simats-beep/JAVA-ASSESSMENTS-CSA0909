@@ -1,0 +1,35 @@
+==================================================================
+ TASK B2: Engineer an Adversarial Input - Security & Robustness   
+==================================================================
+
+[EXPERIMENT 1] Testing Adversarial SQL Injection Inputs:
+
+  Attacking with Username: "admin' --"
+    [SQL Engine Executing]: SELECT * FROM users WHERE id='admin' --' AND pwd='COMPLETELY_WRONG_PASSWORD_XYZ'
+    Unsafe Login Result:       >> BREACH! Invalid login accepted without password.
+    PreparedStatement Result:  >> SAFE! Adversarial input strictly rejected as literal string.
+
+  Attacking with Username: "admin' OR '1'='1"
+    [SQL Engine Executing]: SELECT * FROM users WHERE id='admin' OR '1'='1' AND pwd='COMPLETELY_WRONG_PASSWORD_XYZ'
+    Unsafe Login Result:       >> BREACH! Invalid login accepted without password.
+    PreparedStatement Result:  >> SAFE! Adversarial input strictly rejected as literal string.
+
+  Attacking with Username: "admin' /* comment bypass */"
+    [SQL Engine Executing]: SELECT * FROM users WHERE id='admin' /* comment bypass */' AND pwd='COMPLETELY_WRONG_PASSWORD_XYZ'
+    Unsafe Login Result:       Rejected
+    PreparedStatement Result:  >> SAFE! Adversarial input strictly rejected as literal string.
+
+[EXPERIMENT 2] Testing Adversarial Damaged Bus-Pass File:
+  Ingestion Completed Successfully without Runtime Crashes!
+  Valid Records Accepted:    2
+  Damaged Records Rejected:  3
+  Detailed Parser Error Log:
+    - Line #2: Rejected - Expected 5 fields, got 2
+    - Line #3: Rejected - Expected 5 fields, got 6
+    - Line #4: Rejected - Corrupted numeric field: For input string: "NOT_A_DOUBLE"
+    - Line #5: Ignored empty/blank line
+    - Line #6: Ignored empty/blank line
+
+==================================================================
+ Task B2 Adversarial Engineering Analysis 100% Complete!          
+==================================================================
