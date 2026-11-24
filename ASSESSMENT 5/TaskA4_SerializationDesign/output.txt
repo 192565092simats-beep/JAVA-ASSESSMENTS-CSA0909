@@ -1,0 +1,30 @@
+==================================================================
+ TASK A4: Object Graph Serialization and Transient Design Demo    
+==================================================================
+
+[STEP 1] State Before Serialization (In-Memory Objects):
+  Hostel: SIMATS Tagore International Hostel
+  Resident 1: Resident[Name=Thejas Balaji, Reg=192565092, Password=SecretPass#2026, Connection=ActiveSocket[jdbc:mysql://10.0.0.12:3306/hostel_db, open=true], Phone=+91-9840123456]
+  Resident 2: Resident[Name=Karthik Raja, Reg=192565093, Password=MyPassword@123, Connection=ActiveSocket[jdbc:mysql://10.0.0.12:3306/hostel_db, open=true], Phone=Unassigned]
+  Active Live Connection Present: true
+
+[STEP 2] Serializing Object Graph to File: hostel_state13301130523427129305.ser
+  Serialization Succeeded! File size: 510 bytes
+  (Live socket and password were safely bypassed without NotSerializableException)
+
+[STEP 3] Deserializing Object Graph from Disk into Fresh JVM Memory:
+  Restored Hostel Name: SIMATS Tagore International Hostel
+  Total Rooms Reconstructed: 2
+  Room #101 Residents:
+    -> Resident[Name=Thejas Balaji, Reg=192565092, Password=<null/omitted>, Connection=<null/disconnected>, Phone=+91-9840123456]
+  Room #102 Residents:
+    -> Resident[Name=Karthik Raja, Reg=192565093, Password=<null/omitted>, Connection=<null/disconnected>, Phone=Unassigned]
+
+[STEP 4] Verifying Security and Transient Field Protection:
+  Password restored as:   null (Must be null)
+  Connection restored as: null (Must be null)
+  Phone number preserved: +91-9840123456
+
+==================================================================
+ Task A4 Object Graph Serialization Verified Successfully!        
+==================================================================
