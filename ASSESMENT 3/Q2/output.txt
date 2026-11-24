@@ -1,0 +1,27 @@
+Saved answer01.pdf
+Error: Could not store answer02.pdf
+Cause: Disk quota exceeded
+
+==========================================================
+ Q2: 3-Layer Exam Portal Exception Propagation & Chaining 
+==========================================================
+
+[Controller] Incoming submission: Student=192565092, File=thejas_answer.pdf, Size=250KB, Time=11:00
+  [ServiceLayer] Validating submission for student 192565092...
+    [StorageLayer] File 'thejas_answer.pdf' (Size: 250 KB) written to disk.
+  [UI Response 200 OK] Submission successful! Confirmation receipt issued.
+
+[Controller] Incoming submission: Student=REG_INVALID, File=draft.pdf, Size=200KB, Time=11:00
+  [ServiceLayer] Validating submission for student REG_INVALID...
+  [UI Response 401 Unauthorized] Student ID REG_INVALID is not enrolled in course CSA0909.
+
+[Controller] Incoming submission: Student=192565092, File=late_submission.pdf, Size=300KB, Time=14:00
+  [ServiceLayer] Validating submission for student 192565092...
+  [UI Response 403 Forbidden] Submission portal closed at 13:00. Attempted at 14:00.
+
+[Controller] Incoming submission: Student=192565092, File=huge_project.pdf, Size=1200KB, Time=11:00
+  [ServiceLayer] Validating submission for student 192565092...
+  [UI Response 500 Internal Error] Failed to persist answer script: huge_project.pdf
+    [Server Diagnostic Log] Root Cause: Storage disk block allocation failed: Quota 500KB exceeded.
+
+==========================================================
