@@ -1,0 +1,36 @@
+==================================================================
+ TASK A5: Design for Correctness and Safety - Demo               
+==================================================================
+
+[EXPERIMENT 1] Auto-Commit Failure vs Atomic Transaction Rollback:
+Initial Balances: Hostel=Rs.2000.00 | Canteen=Rs.500.00
+  [UNSAFE AUTO-COMMIT] Starting transfer of Rs. 500.0
+    Step 1: Debited Rs. 500.00 from HOSTEL_W1 (New balance: 1500.00) [AUTO-COMMITTED]
+    *** CRITICAL SYSTEM CRASH / POWER FAILURE OCCURRED BETWEEN UPDATES! ***
+  Caught expected crash: PowerFailureException: Server went down before step 2
+Balances After Unsafe Crash: Hostel=Rs.1500.00 | Canteen=Rs.500.00
+  >> RESULT: Rs. 500 WAS PERMANENTLY LOST INTO THIN AIR!
+
+Testing Safe Transaction with Rollback:
+  [SAFE TRANSACTION] Starting atomic transfer of Rs. 500.0
+    Step 1: Debited Rs. 500.00 from HOSTEL_W1 in transaction
+    *** CRITICAL SYSTEM CRASH OCCURRED! TRIGGERING ROLLBACK ***
+    Step 4: ROLLBACK EXECUTED -> Restored sender and receiver balances.
+Balances After Transaction Rollback: Hostel=Rs.2000.00 | Canteen=Rs.500.00
+  >> RESULT: ROLLED BACK SAFELY! Zero money lost or created.
+
+[EXPERIMENT 2] SQL Injection Attack Simulation:
+
+1. Testing Against Vulnerable String-Concatenated SQL:
+  Generated Raw SQL: SELECT * FROM users WHERE id='admin' --' AND pwd='WrongPassword999'
+  [VULNERABILITY EXPLOITED] Comment marker '--' or 'OR 1=1' bypassed password check!
+  Authentication Outcome: ACCESS GRANTED (INTRUSION SUCCESSFUL!)
+
+2. Testing Against Secure PreparedStatement:
+  Compiled SQL Template: SELECT * FROM users WHERE id = ? AND pwd = ?
+  Bound Parameters: [1 => admin' --], [2 => WrongPassword999]
+  Authentication Outcome: ACCESS DENIED (ATTACK NEUTRALIZED!)
+
+==================================================================
+ Task A5 Correctness and Safety Principles 100% Verified!        
+==================================================================
