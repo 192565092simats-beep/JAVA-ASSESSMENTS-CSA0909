@@ -1,0 +1,25 @@
+==========================================================
+      Q1: Handling Failure in a Bank ATM Simulation       
+==========================================================
+
+[ATM] Initiating transaction: Account='100234', Amount='1500.00'
+  [SUCCESS] Dispensed Rs 1500.00. Remaining balance: Rs 3500.00
+  [FINALLY GUARANTEE] Card ejected safely. Session closed.
+
+[ATM] Initiating transaction: Account='100234', Amount='FIFTEEN_HUNDRED'
+  [INPUT FORMAT ERROR] Numbers required: For input string: "FIFTEEN_HUNDRED"
+  [FINALLY GUARANTEE] Card ejected safely. Session closed.
+
+[ATM] Initiating transaction: Account='100234', Amount='-500.00'
+  [BUSINESS VALIDATION ERROR] Withdrawal amount must be greater than zero. Provided: -500.0
+  [FINALLY GUARANTEE] Card ejected safely. Session closed.
+
+[ATM] Initiating transaction: Account='100234', Amount='10000.00'
+  [TRANSACTION REJECTED] Insufficient funds in account. Available: Rs 3500.00, Requested: Rs 10000.00
+  [FINALLY GUARANTEE] Card ejected safely. Session closed.
+
+[ATM] Initiating transaction: Account='100234', Amount='500.00'
+  [HARDWARE FAULT] Card-reader hardware interface file not found: missing_hardware_port.sys
+  [FINALLY GUARANTEE] Card ejected safely. Session closed.
+
+==========================================================
