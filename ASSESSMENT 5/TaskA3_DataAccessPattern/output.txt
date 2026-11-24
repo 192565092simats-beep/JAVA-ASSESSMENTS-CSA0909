@@ -1,0 +1,25 @@
+==================================================================
+ TASK A3: Discover the Data-Access Design Pattern (DAO Pattern)   
+==================================================================
+
+[STEP 1] Executing DAO Insert Operations:
+  Inserted 3 students into simulated student table.
+
+[STEP 2] Executing DAO findAll():
+  Student[Reg:192565092 | Thejas Balaji | Dept:Computer Science | CGPA:9.45]
+  Student[Reg:192565093 | Karthik Raja | Dept:Information Tech | CGPA:8.85]
+  Student[Reg:192565094 | Ananya Sharma | Dept:Electronics Eng | CGPA:9.12]
+
+[STEP 3] Executing DAO findById('192565092'):
+  Lookup Result: Student[Reg:192565092 | Thejas Balaji | Dept:Computer Science | CGPA:9.45]
+
+[STEP 4] Executing DAO update() (CGPA updated to 9.75):
+  Updated Record: Student[Reg:192565092 | Thejas Balaji | Dept:Computer Science | CGPA:9.75]
+
+[STEP 5] Executing DAO delete('192565093'):
+  Deletion Status: SUCCESS
+  Remaining Record Count: 2
+
+==================================================================
+ Task A3 Generic DAO Pattern Verified Successfully!              
+==================================================================
