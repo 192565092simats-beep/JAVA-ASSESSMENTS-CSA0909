@@ -1,0 +1,31 @@
+==========================================================
+ TASK 2: Hospital Outpatient Appointment Desk Demo       
+==========================================================
+
+[STEP 1] Initial Form State Verification:
+  Default Selected Department: Cardiology
+  Doctors available in Cardiology:
+    - Dr. Sarah Vance (Senior Interventionalist)
+    - Dr. Neil Adams (Consultant)
+
+[STEP 2] Simulating Department Change Event (ItemEvent):
+  User selects: "Neurology"
+  Updated Doctors list for Neurology:
+    - Dr. Alan Turing (Neurosurgeon)
+    - Dr. Grace Hopper (Stroke Care)
+
+[STEP 3] Simulating Validation Failure (Empty Patient ID):
+  Booking result: FAILED
+  Status displayed: Validation Error: Patient ID is required!
+
+[STEP 4] Simulating Valid Appointment Booking (ActionEvent):
+  Booking result: SUCCESS
+  Status displayed: SUCCESS: Appt confirmed for PAT-98421 with Dr. Alan Turing (Neurosurgeon) (Neurology) at 10:00 AM - 10:30 AM
+  Booking in progress flag: false
+
+[STEP 5] Simulating Window Closing Event with Active Form (WindowEvent):
+  [WindowListener] Window close intercepted: Active booking form in progress.
+
+==========================================================
+ Task 2 Event-Driven Architecture Verified Successfully!  
+==========================================================
