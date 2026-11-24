@@ -1,0 +1,21 @@
+==================================================================
+ TASK A2: Don't Read What You Don't Need - Buffering Analysis    
+==================================================================
+[BENCHMARK DATASET] Generated 40000 lines (2388894 bytes / 2.28 MB)
+
+[EXPERIMENT 1] Unbuffered Line Count (FileInputStream.read() 1 byte/call):
+  Lines Counted:    40000
+  Total read() calls: 2388895 (1 syscall per byte)
+  Time Elapsed:     801 ms
+  Throughput:       2912.49 KB/s
+
+[EXPERIMENT 2] Buffered Line Count (BufferedInputStream 8192-byte buffer):
+  Lines Counted:    40000
+  Estimated Syscalls to OS: 292 (down from 2388895)
+  Time Elapsed:     11 ms
+  Throughput:       207.11 MB/s
+
+[ANALYSIS] Buffering provided a 72.8x speedup and reduced OS system calls by 99.988%
+==================================================================
+ Task A2 Buffering Benchmark Completed Successfully!             
+==================================================================
