@@ -1,0 +1,18 @@
+==========================================================
+ TASK 1: GUI Design Review - Diagnose and Repair          
+==========================================================
+
+[TEST 1] Validation with Empty Registration Plate:
+  Handled Validation Error: Registration number cannot be empty.
+
+[TEST 2] Validation with Non-numeric Amount ("FiveThousand"):
+  Handled Validation Error: Invalid amount format. Please enter a valid number.
+
+[TEST 3] Validation with Negative Amount (-1500):
+  Handled Validation Error: Fee amount must be greater than zero.
+
+[TEST 4] Valid Asynchronous Payment Execution (Background Thread):
+  Payment Confirmed! Receipt: REC-86374 | Amount: Rs 12500.00
+
+[VERIFICATION] Repaired architecture verified successfully.
+==========================================================
