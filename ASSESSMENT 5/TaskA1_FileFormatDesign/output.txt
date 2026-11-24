@@ -1,0 +1,28 @@
+==================================================================
+ TASK A1: Bus-Pass File Format Design and Error Containment Demo   
+==================================================================
+
+[STEP 1] Writing Valid Passes (Handling Comma in Name):
+  Passes written successfully to text and binary stores.
+
+[STEP 2] Injecting Damaged Line into Text File:
+  Appended corrupted record: "P1099,CORRUPTED_ENTRY_MISSING_FIELDS"
+
+[STEP 3] Testing Find Pass by ID:
+  Search for 'P1001': [P1001] Reg:192565092 | Balaji, Thejas | Route 12 (Tambaram) | Valid:2026-12-31 | Rs.4500.00
+  Search for 'P9999': NOT FOUND
+
+[STEP 4] Testing List Passes on Route 12:
+  Found 2 passes on Route 12:
+    - [P1001] Reg:192565092 | Balaji, Thejas | Route 12 (Tambaram) | Valid:2026-12-31 | Rs.4500.00
+    - [P1002] Reg:192565093 | Karthik Raja | Route 12 (Guindy) | Valid:2026-12-31 | Rs.4500.00
+
+[STEP 5] Reading from Binary File Store (DataInputStream):
+  Total Binary Passes Recovered: 3
+    - [P1001] Reg:192565092 | Balaji, Thejas | Route 12 (Tambaram) | Valid:2026-12-31 | Rs.4500.00
+    - [P1002] Reg:192565093 | Karthik Raja | Route 12 (Guindy) | Valid:2026-12-31 | Rs.4500.00
+    - [P1003] Reg:192565094 | Ananya Sharma | Route 7 (Central Station) | Valid:2026-12-31 | Rs.3800.00
+
+==================================================================
+ Task A1 Design & Implementation Verified Successfully!           
+==================================================================
